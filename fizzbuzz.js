@@ -60,3 +60,38 @@
                 console.log(str1)
     
                 // part 2 //
+
+         // Function to verify if a number is prime
+function isPrimeNumber(num) {
+    if (num <= 1) return false;
+    if (num <= 3) return true;
+    if (num % 2 === 0 || num % 3 === 0) return false;
+    for (let i = 5; i * i <= num; i += 6) {
+        if (num % i === 0 || num % (i + 2) === 0) return false;
+    }
+    return true;
+}
+
+// Function to compute the next prime number after a given number
+function findNextPrimeNumber(start) {
+    let candidate = start + 1; // Start from the number immediately after start
+    while (!isPrimeNumber(candidate)) {
+        candidate++;
+    }
+    console.log(`The next prime number after ${start} is ${candidate}`);
+    return candidate;
+}
+
+// Test function to find and print the next prime for a given number
+function testNextPrime(initialNumber) {
+    console.log(`Initial number: ${initialNumber}`);
+    let nextPrime = findNextPrimeNumber(initialNumber);
+    console.log(`Found prime: ${nextPrime}`);
+}
+
+// Declare a starting number for testing
+let testNumber = 4; // Modify this value for different test cases
+
+// Run the test
+testNextPrime(testNumber);
+       
